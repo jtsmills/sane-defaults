@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"lib": ["dom", "esnext"],
+		"jsx": "preserve",
+		"target": "es5",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"preserveConstEnums": true,
+		"removeComments": true,
+		"sourceMap": true,
+		"strict": true,
+		"resolveJsonModule": true,
+		"skipDefaultLibCheck": true,
+		"skipLibCheck": true
+	},
+	"exclude": ["./node_modules/*"]
+}
