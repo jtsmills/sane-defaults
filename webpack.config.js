@@ -51,4 +51,7 @@ module.exports = (_env, _options) => ({
 	plugins: [
 		new MiniCssExtractPlugin({filename: '../css/[name].css', chunkFilename: '../css/[name].chunk.css', ignoreOrder: true})
 	],
+	resolve: {
+		extensions: ['.ts', '.tsx', '.js', '.jsx'],
+	},
 });
