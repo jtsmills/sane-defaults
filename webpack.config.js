@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = (_env, _options) => ({
@@ -16,11 +17,13 @@ module.exports = (_env, _options) => ({
 	entry: {
 		app: './src/index.tsx',
 	},
+	devServer: {
+		contentBase: './dist',
+	},
 	output: {
-		filename: '[name].js',
-		chunkFilename: '[name].chunk.js',
-		publicPath: '/js/',
-		path: path.resolve(__dirname, 'public/static/js'),
+		filename: 'js/[name].js',
+		chunkFilename: 'js/[name].chunk.js',
+		path: path.resolve(__dirname, 'dist'),
 	},
 	module: {
 		rules: [
@@ -49,6 +52,14 @@ module.exports = (_env, _options) => ({
 		],
 	},
 	plugins: [
-		new MiniCssExtractPlugin({filename: '../css/[name].css', chunkFilename: '../css/[name].chunk.css', ignoreOrder: true})
+		new MiniCssExtractPlugin({filename: 'css/[name].css', chunkFilename: 'css/[name].chunk.css', ignoreOrder: true}),
+		new HtmlWebpackPlugin({
+			title: 'Sane Defauls',
+			filename: 'index.html',
+			template: './src/index.html'
+		})
 	],
+	resolve: {
+		extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+	},
 });
